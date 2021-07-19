@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarLoggedComponent } from 'app/shared/navbar-logged/navbar-logged.component';
 
 @Component({
     selector: 'app-components',
@@ -19,6 +20,7 @@ export class ComponentsComponent implements OnInit {
     focus2;
     date: {year: number, month: number};
     model: NgbDateStruct;
+
     constructor( private renderer : Renderer2) {}
     isWeekend(date: NgbDateStruct) {
         const d = new Date(date.year, date.month - 1, date.day);
@@ -30,6 +32,7 @@ export class ComponentsComponent implements OnInit {
     }
 
     ngOnInit() {
+
         let input_group_focus = document.getElementsByClassName('form-control');
         let input_group = document.getElementsByClassName('input-group');
         for (let i = 0; i < input_group.length; i++) {

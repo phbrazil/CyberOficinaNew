@@ -11,12 +11,27 @@ export class NavbarLoggedComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
+    firstName = "";
+
+    user = JSON.parse(localStorage.getItem('user'));
+
     constructor(public location: Location, private element : ElementRef, 
         private accountService: AccountService) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
+
+        let fullName = new String(this.user.nome);
+        let len  = fullName.length;
+        for (var i = 0; i < len; i++) {
+          if (fullName[i] == ' ') {
+            break;
+          } else {
+            this.firstName += fullName[i];
+          }
+        }
+    
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }

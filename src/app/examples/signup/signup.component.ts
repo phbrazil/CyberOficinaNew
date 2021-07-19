@@ -38,8 +38,8 @@ export class SignupComponent implements OnInit {
     get f() { return this.form.controls; }
 
     onSubmit() {
-        console.log('to no submit')
-        this.submitted = true;
+
+      this.submitted = true;
     
         // reset alerts on submit
         this.alertService.clear();
@@ -55,9 +55,7 @@ export class SignupComponent implements OnInit {
         this.accountService.login(this.f.username.value, this.f.password.value)
           .pipe(first())
           .subscribe(
-            data => {
-              console.log(data)
-    
+            data => {    
               this.router.navigate([this.returnUrl]);
             },
             error => {

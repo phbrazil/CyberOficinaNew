@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarLoggedComponent } from 'app/shared/navbar-logged/navbar-logged.component';
 import { AccountService } from 'app/_services';
 import * as Chartist from 'chartist';
 import { first } from 'rxjs/operators';
@@ -13,8 +14,9 @@ export class DashboardComponent implements OnInit {
   pendingOrcs;
   isLogged = false;
 
-  user = JSON.parse(localStorage.getItem('user'));
+  firstName = "";
 
+  user = JSON.parse(localStorage.getItem('user'));
 
   constructor(private accountService: AccountService) {
 
@@ -77,12 +79,22 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
   };
 
-  ngOnchanges(){
+  ngOnchanges() {
 
     console.log('on changes')
 
   }
   ngOnInit() {
+
+    let fullName = new String(this.user.nome);
+    let len  = fullName.length;
+    for (var i = 0; i < len; i++) {
+      if (fullName[i] == ' ') {
+        break;
+      } else {
+        this.firstName += fullName[i];
+      }
+    }
     
     this.listOrcs(this.user.id);
 
@@ -105,9 +117,9 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
     }
 
-    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    //var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-    this.startAnimationForLineChart(dailySalesChart);
+    //this.startAnimationForLineChart(dailySalesChart);
 
 
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
@@ -128,10 +140,10 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
     }
 
-    var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+    //var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
     // start animation for the Completed Tasks Chart - Line Chart
-    this.startAnimationForLineChart(completedTasksChart);
+    //this.startAnimationForLineChart(completedTasksChart);
 
 
 
@@ -162,14 +174,14 @@ export class DashboardComponent implements OnInit {
         }
       }]
     ];
-    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+    //var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
     //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(websiteViewsChart);
+    //this.startAnimationForBarChart(websiteViewsChart);
   }
 
-   //LIST PENDING ORCS
-   listOrcs(idUser: string) {
+  //LIST PENDING ORCS
+  listOrcs(idUser: string) {
 
     this.accountService.listOrcs(idUser)
       .pipe(first())

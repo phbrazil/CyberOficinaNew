@@ -1,22 +1,27 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fabricante</th>
-                    <th scope="col">Veiculo</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let orcamento of orcamentos">
-                    <th scope="row">1</th>
-                    <td>{{orcamento.marca}}</td>
-                    <td>{{orcamento.veiculo}}</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="page-header" style="background-image: url('./assets/img/bg-header_2.jpg');">
+        <div class="filter"></div>
+        <div class="main-content">
+            <div class="container-fluid">
+                <table class="table table-dark">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fabricante</th>
+                            <th scope="col">Veiculo</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let orcamento of orcamentos">
+                            <th scope="row">1</th>
+                            <td>{{orcamento.marca}}</td>
+                            <td>{{orcamento.veiculo}}</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

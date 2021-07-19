@@ -9,10 +9,12 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
-import { UserProfileComponent } from 'app/user-profile/user-profile.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { OrcamentoComponent } from 'app/orcamento/orcamento.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { MeusOrcamentosComponent } from 'app/meus-orcamentos/meus-orcamentos.component';
+import { EditUserProfileComponent } from 'app/account/edit-profile/edit-profile.component';
+import { ProfileComponent } from 'app/account/profile/profile.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -38,7 +40,9 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
   declarations: [
     DashboardComponent,
     OrcamentoComponent,
-    UserProfileComponent,
+    EditUserProfileComponent,
+    ProfileComponent,
+    MeusOrcamentosComponent
     //TableListComponent,
     //TypographyComponent,
     //IconsComponent,

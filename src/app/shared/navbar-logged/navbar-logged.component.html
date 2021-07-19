@@ -11,28 +11,13 @@
         <div class="navbar-collapse" id="navbarTogglerLogged">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
-                    </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
-                    </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/Cyber Oficina" target="_blank">
-                        <i class="fa fa-github"></i>
-                        <p class="d-lg-none">GitHub</p>
-                    </a>
+                    <a routerLink="/" class="nav-link" ><i class="nc-icon nc-chart-bar-32"></i> Dashboards</a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <a routerLink="/orcamento" class="nav-link" ><i class="nc-icon nc-bulb-63"></i> Novo Orçamento</a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a routerLink="/user-profile" class="nav-link" ><i class="nc-icon nc-badge"></i> Perfil</a>
+                    <a routerLink="/user-profile" class="nav-link" ><i class="nc-icon nc-badge"></i> Perfil ({{firstName}})</a>
                 </li>
                 <li class="nav-item">
                     <a (click)="logout()" class="btn btn-primary btn-round">Sair</a>

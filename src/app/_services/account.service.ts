@@ -154,9 +154,6 @@ export class AccountService {
 
     login(username, password) {
 
-        console.log('to aqui')
-
-
         //const url = 'http://localhost:8080/account/api/auth/signin';
 
         const url = 'https://cyberoficina.herokuapp.com/account/api/auth/signin';
