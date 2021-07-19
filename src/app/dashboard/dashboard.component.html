@@ -6,12 +6,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
-                            <div *ngIf="!pendingOrcs">
-                                <div class="spinner-border text-success" role="status">
-                                    <span class="sr-only">Carregando...</span>
-                                </div>
-                            </div>
                             <div class="card-body">
+                                <div *ngIf="isLoading">
+                                    <div class="spinner-border text-success" role="status">
+                                        <span class="sr-only">Carregando...</span>
+                                    </div>
+                                </div>
                                 <h5 class="card-title"><strong>Orçamentos</strong></h5>
                                 <p class="card-text">Olá {{firstName}}, você tem {{pendingOrcs}} orçamentos</p>
                                 <a routerLink="/meus-orcamentos" class="btn btn-primary">Ver Orçamentos</a>

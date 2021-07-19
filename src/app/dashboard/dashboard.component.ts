@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
   pendingOrcs;
   isLogged = false;
+  isLoading = false;
 
   firstName = "";
 
@@ -183,6 +184,8 @@ export class DashboardComponent implements OnInit {
   //LIST PENDING ORCS
   listOrcs(idUser: string) {
 
+    this.isLoading = true;
+
     this.accountService.listOrcs(idUser)
       .pipe(first())
       .subscribe(x => {
@@ -191,6 +194,8 @@ export class DashboardComponent implements OnInit {
 
         orcamentos = x['orcamentos'];
         this.pendingOrcs = x['totalElements'];
+
+        this.isLoading = false;
 
 
       });
