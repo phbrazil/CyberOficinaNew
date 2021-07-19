@@ -15,6 +15,7 @@ export class OrcamentoComponent implements OnInit {
   loading = false;
   submitted = false;
   veiculo = false;
+  ready = false;
 
   marcas = [
     {
