@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { AlertService } from './alert.service';
 import { User } from 'app/_models';
+import { Fabricante } from 'app/_models/fabricante';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -290,6 +291,39 @@ export class AccountService {
 
         return this.http.get(url, header);
     }
+
+    listFabricantes() {
+
+        const token = localStorage.getItem('token');
+
+        var header = {
+            headers: new HttpHeaders()
+                .set('Authorization', `Bearer ${token}`)
+        }
+
+        //const url = `http://localhost:8080/cyberoficina/listFabricantes`;
+
+        const url = `https://cyberoficina.herokuapp.com/cyberoficina/listFabricantes`;
+
+        return this.http.get<Fabricante>(url, header);
+    }
+
+    listVeiculos(marca: String) {
+
+        const token = localStorage.getItem('token');
+
+        var header = {
+            headers: new HttpHeaders()
+                .set('Authorization', `Bearer ${token}`)
+        }
+
+        //const url = `http://localhost:8080/cyberoficina/listVeiculos/${marca}`;
+
+        const url = `https://cyberoficina.herokuapp.com/cyberoficina/listVeiculos/${marca}`;
+
+        return this.http.get(url, header);
+    }
+
 
     resetPassword(email) {
 

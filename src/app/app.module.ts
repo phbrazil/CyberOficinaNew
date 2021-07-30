@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AgmCoreModule } from '@agm/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -26,6 +27,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
 
 @NgModule({
   imports: [
+    MatAutocompleteModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,

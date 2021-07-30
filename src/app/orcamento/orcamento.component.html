@@ -1,13 +1,18 @@
 <div class="main-content">
     <div class="page-header" style="background-image: url('./assets/img/bg-header_2.jpg');">
         <div class="filter"></div>
-        <div class="card">
+        <div class="card" style="margin-top: 100px;">
             <div class="container mt-4 mb-4">
                 <form (ngSubmit)="onSubmit()" [formGroup]="orcamento">
                     <div class="form-group">
-                        <div class="col-md-10 col-sm-8 col-xs-6">
-                            <div class="row">
-                                <div class="col-md-12">
+                        <div class="col-md-12 col-sm-8 col-xs-6">
+                            <div *ngIf="loading">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="sr-only">Carregando...</span>
+                                </div>
+                            </div>
+                            <div *ngIf="!loading" class="row">
+                                <div class="col-md-6">
                                     <label for="marca">Fabricante (Ex.: Nissan)</label>
                                     <input (change)="checkVeiculo($event.target.value)" formControlName="marca"
                                         placeholder="Digite" class="form-control" list="marcas">
@@ -15,19 +20,46 @@
                                         <option *ngFor="let marca of marcas">{{marca.nome}} </option>
                                     </datalist>
                                 </div>
-                                <div *ngIf="veiculo" class="col-md-12 mt-2">
+                                <div *ngIf="marcas" class="col-md-6">
                                     <label for="veiculo">Veículo</label>
-                                    <input class="form-control" list="veiculos" name="veiculos">
+                                    <input placeholder="Digite" class="form-control" list="veiculos" formControlName="veiculo">
                                     <datalist id="veiculos">
                                         <option *ngFor="let veiculo of veiculos">{{veiculo.nome}} </option>
                                     </datalist>
                                 </div>
-                                <div *ngIf="veiculo" class="col-md-12 mt-2">
-                                    <label for="veiculo">Defeito</label>
-                                    <input class="form-control" list="veiculos" name="veiculos">
-                                    <datalist id="veiculos">
-                                        <option *ngFor="let veiculo of veiculos">{{veiculo.nome}} </option>
+                                <div *ngIf="isVeiculo" class="col-md-6 mt-2">
+                                    <label for="urgencia">Urgência</label>
+                                    <input placeholder="Selecione" class="form-control" list="urgencia" name="urgencia"
+                                        formControlName="urgencia">
+                                    <datalist id="urgencia">
+                                        <option *ngFor="let urgencia of prioridades">{{urgencia.nome}} </option>
+
                                     </datalist>
+                                </div>
+                                <div *ngIf="isVeiculo" class="col-md-6 mt-2">
+                                    <label for="isMecSemOfic">Aceita mecânico sem oficina?</label>
+                                    <input placeholder="Selecione" class="form-control" list="isMecSemOfic" name="isMecSemOfic"
+                                        formControlName="isMecSemOfic">
+                                    <datalist id="isMecSemOfic">
+                                        <option>Sim</option>
+                                        <option>Não</option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isVeiculo" class="col-md-12 mt-2">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <button (click)="checkSintoma('isNaoLiga')" class="btn btn-lg btn-block btn-primary" type="submit"
+                                        [disabled]="!isNaoLiga">Meu Veículo Não Liga</button>
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <button (click)="checkSintoma('isBarulho')" class="btn btn-lg btn-block btn-success" type="submit"
+                                        [disabled]="!isBarulho">Meu Problema é Barulho</button>
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <button (click)="checkSintoma('isNaoSeiProb')" class="btn btn-lg btn-block btn-warning" type="submit"
+                                        [disabled]="!isNaoSeiProb">Não Sei Meu Problema</button>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +68,7 @@
                     <div class="form-group">
                         <button [disabled]="!ready" class="btn btn-primary">
                             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            Criar Orçamento
+                            Avançar
                         </button>
                         <a routerLink="../dashboard" class="btn btn-link">Cancelar</a>
                     </div>

@@ -15,6 +15,7 @@ import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MeusOrcamentosComponent } from 'app/meus-orcamentos/meus-orcamentos.component';
 import { EditUserProfileComponent } from 'app/account/edit-profile/edit-profile.component';
 import { ProfileComponent } from 'app/account/profile/profile.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -35,7 +36,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     MatSelectModule,
     MatTooltipModule,
     NgxMaskModule.forRoot(maskConfigFunction),
-
+    MatAutocompleteModule,
   ],
   declarations: [
     DashboardComponent,
