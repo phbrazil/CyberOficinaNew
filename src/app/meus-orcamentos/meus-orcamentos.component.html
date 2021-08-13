@@ -2,22 +2,24 @@
     <div class="page-header" style="background-image: url('./assets/img/bg-header_2.jpg');">
         <div class="filter"></div>
         <div class="main-content card" style="z-index: 10;">
-            <div class="container-fluid mt-2 mb-2">
-                <table class="table table-light" id="table">
+            <div class="container-fluid mt-2 mb-2 table-responsive">
+                <table class="table table-light table-striped" id="table">
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
                             <th>Fabricante</th>
                             <th>Veiculo</th>
                             <th>Status</th>
+                            <th>Detalhes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let orcamento of orcamentos">
-                            <th scope="row">1</th>
+                        <tr *ngFor="let orcamento of orcamentos; index as i">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{orcamento.marca}}</td>
                             <td>{{orcamento.veiculo}}</td>
-                            <td>@mdo</td>
+                            <td>{{orcamento.status}}</td>
+                            <td><button [disabled]="true" class="btn btn-sm btn-info">Detalhes</button></td>
                         </tr>
                     </tbody>
                 </table>
