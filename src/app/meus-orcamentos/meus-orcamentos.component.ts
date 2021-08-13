@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AccountService } from 'app/_services';
 import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-meus-orcamentos',
@@ -13,11 +14,25 @@ export class MeusOrcamentosComponent implements OnInit {
 
   user = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
 
     this.listOrcs(this.user.id);
+    
+  }
+
+  dataTable(){
+
+    var $ = require('jquery');
+
+    require('datatables.net')
+
+    this.changeDetector.detectChanges();
+
+    $('table').DataTable();
+
+
   }
 
    //LIST PENDING ORCS
@@ -28,6 +43,8 @@ export class MeusOrcamentosComponent implements OnInit {
       .subscribe(x => {
 
         this.orcamentos = x['orcamentos'];
+
+        this.dataTable();
 
       });
   }
